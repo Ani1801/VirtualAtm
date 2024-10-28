@@ -1,0 +1,179 @@
+/* General body styling */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7fa; /* Soft background color */
+    color: #333;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    background-color: #0d6efd; /* Main color for branding */
+    color: white;
+    padding: 20px;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2); /* Deeper shadow for depth */
+    z-index: 1000;
+}
+
+/* Open sidebar */
+.sidebar.sidebar-open {
+    left: 0;
+}
+
+/* Sidebar links */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    color: #ffcb05; /* Hover color */
+}
+
+/* Close button */
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* Content styling */
+.content {
+    max-width: 900px;
+    margin: 50px auto; /* Center the content */
+    padding: 20px;
+    background-color: #ffffff; /* White background for content */
+    border-radius: 10px;
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    transition: margin-left 0.3s ease;
+    position: relative;
+    z-index: 500;
+}
+
+/* Header styling */
+h1 {
+    color: #0d6efd; /* Branding color for headings */
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Card for balance display */
+.balance-card {
+    background: #e9f5ff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.balance-card:hover {
+    transform: translateY(-5px);
+    background-color: #d1e7ff; /* Lighter shade on hover */
+}
+
+/* Balance display */
+#balance {
+    font-size: 28px; /* Larger balance display */
+    color: #28a745; /* Green color for balance */
+    font-weight: bold;
+}
+
+/* Account number styling */
+#account-number {
+    font-size: 20px;
+    color: #0d6efd; /* Branding color */
+}
+
+/* Recent transactions section */
+h2 {
+    color: #333;
+    margin-top: 20px;
+    border-bottom: 2px solid #0d6efd; /* Underline for section title */
+    padding-bottom: 10px;
+    font-size: 22px; /* Section title size */
+}
+
+.transaction-list {
+    list-style-type: none;
+    padding: 0;
+    max-height: 300px; /* Increased height for better visibility */
+    overflow-y: auto;
+    margin: 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+/* Transaction items */
+.transaction-list li {
+    padding: 15px; /* Increased padding for touch targets */
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.transaction-list li:last-child {
+    border-bottom: none;
+}
+
+.transaction-list li:hover {
+    background-color: #f0f2f5; /* Light hover effect */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Buttons styling */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0d6efd; /* Branding color */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Animation on hover */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker on hover */
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .sidebar ul li a {
+        font-size: 16px;
+    }
+
+    .content {
+        padding: 15px;
+        margin-left: 20px; /* On smaller screens, no sidebar shift */
+    }
+
+    .balance-card {
+        margin-bottom: 15px;
+    }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Funds</title>
+    <link rel="stylesheet" href="/register/static/css/deposit.css">
+</head>
+<body>
+    <div class="deposit-container">
+        <h1 class="deposit-title">Deposit Funds</h1>
+        
+        <div class="balance-card">
+            <h2>Current Balance</h2>
+            <p class="balance-display">₹<span id="current-balance"></span></p>
+        </div>
+
+        <div class="deposit-form">
+            <input type="number" id="deposit-amount" placeholder="Enter Amount" />
+            <input type="password" id="pin-input" placeholder="Enter PIN" style="display:none;" />
+            <button id="deposit-button">Deposit Now</button>
+        </div>
+
+        <div id="message" class="feedback-message"></div>
+        <ul id="transaction-history"></ul>
+    </div>
+
+    <script src="/register/static/css/js/deposit.js"></script>
+</body>
+</html>

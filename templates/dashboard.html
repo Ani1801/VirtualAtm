@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Machine - Dashboard</title>
+    <link rel="stylesheet" href="/register/static/css/dashboard.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <ul>
+            <!-- <li><a href="/templates/Accountinfo.html">Account Info</a></li> -->
+            <li><a href="/templates/deposit.html">Deposit</a></li>
+            <li><a href="/templates/Withdraw.html">Withdraw</a></li>
+            <li><a href="/templates/T.history.html">Transaction History</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+        <h1>Welcome, Customer #<span id="account-number"></span></h1>
+        
+        <div class="balance-card">
+            <h2>Your Current Balance</h2>
+            <p><strong>Rs.<span id="balance">{{ user.balance }}</span></strong></p>
+        </div>
+        
+
+        <h2>Recent Transactions</h2>
+        <ul id="transaction-history" class="transaction-list"></ul>
+    </div>
+    
+    <script src="/register/static/css/js/dashboard.js"></script>
+</body>
+</html>

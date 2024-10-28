@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Virtual ATM</title>
+    <link rel="stylesheet" href="/register/static/css/register.css">
+</head>
+<body>
+    <div class="register-container">
+        <h2>Register for ATM Access</h2>
+        <form id="registerForm">
+            <label for="user_id">User ID</label>
+            <input type="text" id="user_id" name="user_id" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label for="balance">Initial Balance</label>
+            <input type="number" id="balance" name="balance" value="50000" readonly required>
+            
+            
+
+            <button type="submit"><a href="/templates/login.html"></a>Register</button>
+            <p id="message" class="message"></p>
+        </form>
+    </div>
+    <script src="/register/static/css/js/register.js"></script>
+</body>
+</html>

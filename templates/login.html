@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ATM Machine - Customer Login</title>
+    <link rel="stylesheet" href="/register/static/css/login.css"> <!-- Direct link to CSS -->
+</head>
+<body>
+    <div class="login-container">
+        <h2>Virtual ATM Machine</h2>
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <div class="input-group">
+                <label for="username">Account Number</label>
+                <input type="text" id="username" name="username" placeholder="Enter your account number" required>
+            </div>
+            <div class="input-group">
+                <label for="pin">PIN</label>
+                <input type="password" id="pin" name="pin" placeholder="Enter your PIN" required>
+            </div>
+            <button type="submit" class="login-button">Login</button>
+            <div id="message" class="message"></div>
+        </form>
+    </div>
+
+    <script src="/register/static/css/js/login.js"></script> <!-- Direct link for JS -->
+</body>
+</html>

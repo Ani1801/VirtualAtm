@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Withdrawal</title>
+    <link rel="stylesheet" href="/register/static/css/Withdraw.css">
+</head>
+<body>
+    <div class="atm-container">
+        <h1 class="heading">Virtual ATM Machine</h1>
+        <div class="screen">
+            <h2>Withdrawal</h2>
+            <p>Your balance: <span id="balance">₹0.00</span></p> <!-- Set initial balance to 0 -->
+            <div class="amount-options">
+                <!-- <button class="amount-button" onclick="selectAmount(200)">₹200</button>
+                <button class="amount-button" onclick="selectAmount(500)">₹500</button>
+                <button class="amount-button" onclick="selectAmount(1000)">₹1000</button> -->
+                <button class="amount-button" onclick="showCustomInput()">Enter Amount</button>
+            </div>
+            <div id="custom-amount" class="custom-amount" style="display: none;">
+                <input type="text" id="custom-amount-input" placeholder="Enter amount" readonly />
+                <button class="confirm-button" onclick="confirmWithdrawal()">Confirm</button>
+                <div id="pin-section" style="display: none;">
+                    <input type="password" id="pin-input" placeholder="Enter PIN" />
+                    <button class="confirm-button" onclick="verifyPin()">Confirm PIN</button>
+                </div>
+            </div>
+            <div class="keypad">
+                <button class="key-button" onclick="appendNumber(1)">1</button>
+                <button class="key-button" onclick="appendNumber(2)">2</button>
+                <button class="key-button" onclick="appendNumber(3)">3</button>
+                <button class="key-button" onclick="appendNumber(4)">4</button>
+                <button class="key-button" onclick="appendNumber(5)">5</button>
+                <button class="key-button" onclick="appendNumber(6)">6</button>
+                <button class="key-button" onclick="appendNumber(7)">7</button>
+                <button class="key-button" onclick="appendNumber(8)">8</button>
+                <button class="key-button" onclick="appendNumber(9)">9</button>
+                <button class="key-button" onclick="appendNumber(0)">0</button>
+                <button class="key-button" onclick="clearInput()">C</button>
+            </div>
+            <p id="message"></p>
+        </div>
+    </div>
+
+    <script src="/register/static/css/js/Withdraw.js"></script>
+</body>
+</html>
