@@ -25,3 +25,11 @@ INSERT INTO transactions (user_id, transaction_type, amount, balance_after)
 VALUES (1, 'Deposit', 500.00, 1500.00);
 
 select * from transactions;
+
+INSERT INTO users (account_number, pin, balance)
+VALUES 
+('987654321', '4321', 1000.0),
+('112233445', '1111', 2000.0);
+
+select * from users;
+

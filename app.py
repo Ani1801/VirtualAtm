@@ -1,107 +1,105 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, request, jsonify
 import sqlite3
+from datetime import datetime
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key_here'
 
-# Connect to the SQLite database
 def get_db_connection():
     conn = sqlite3.connect('database/atm_machine.db')
     conn.row_factory = sqlite3.Row
     return conn
 
-# Home page or Welcome page
 @app.route('/')
 def home():
-    return render_template('login.html')
+    return "Welcome to the Virtual ATM API!"
 
-# Login page route
-@app.route('/login', methods=['GET', 'POST'])
+# Login Endpoint
+@app.route('/login', methods=['POST'])
 def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+    data = request.json
+    account_number = data.get('account_number')
+    pin = data.get('pin')
 
-        conn = get_db_connection()
-        user = conn.execute('SELECT * FROM users WHERE username = ? AND password = ?', (username, password)).fetchone()
-        conn.close()
+    if not account_number or not pin:
+        return jsonify({"error": "Account number and PIN are required."}), 400
 
-        if user:
-            session['user_id'] = user['id']
-            return redirect(url_for('dashboard'))
-        else:
-            return 'Invalid username or password'
-
-    return render_template('login.html')
-
-# Dashboard page after login
-@app.route('/dashboard')
-def dashboard():
-    if 'user_id' not in session:
-        return redirect(url_for('login'))
-
-    user_id = session['user_id']
     conn = get_db_connection()
-    account = conn.execute('SELECT * FROM accounts WHERE user_id = ?', (user_id,)).fetchone()
+    user = conn.execute('SELECT * FROM users WHERE account_number = ? AND pin = ?',
+                        (account_number, pin)).fetchone()
     conn.close()
 
-    return render_template('dashboard.html', account=account)
+    if user:
+        return jsonify({"message": "Login successful", "user_id": user['user_id'], "balance": user['balance']}), 200
+    else:
+        return jsonify({"error": "Invalid account number or PIN."}), 401
 
-# Deposit money route
-@app.route('/deposit', methods=['GET', 'POST'])
+# Check Balance Endpoint
+@app.route('/balance/<int:user_id>', methods=['GET'])
+def check_balance(user_id):
+    conn = get_db_connection()
+    user = conn.execute('SELECT balance FROM users WHERE user_id = ?', (user_id,)).fetchone()
+    conn.close()
+
+    if user:
+        return jsonify({"balance": user['balance']}), 200
+    else:
+        return jsonify({"error": "User not found."}), 404
+
+# Deposit Money Endpoint
+@app.route('/deposit', methods=['POST'])
 def deposit():
-    if 'user_id' not in session:
-        return redirect(url_for('login'))
+    data = request.json
+    user_id = data.get('user_id')
+    amount = data.get('amount')
 
-    if request.method == 'POST':
-        amount = float(request.form['amount'])
-        user_id = session['user_id']
+    if not user_id or not amount or amount <= 0:
+        return jsonify({"error": "Valid user ID and amount are required."}), 400
 
-        conn = get_db_connection()
-        conn.execute('UPDATE accounts SET balance = balance + ? WHERE user_id = ?', (amount, user_id))
-        conn.commit()
-        conn.close()
-
-        return redirect(url_for('dashboard'))
-
-    return render_template('deposit.html')
-
-# Withdraw money route
-@app.route('/withdraw', methods=['GET', 'POST'])
-def withdraw():
-    if 'user_id' not in session:
-        return redirect(url_for('login'))
-
-    if request.method == 'POST':
-        amount = float(request.form['amount'])
-        user_id = session['user_id']
-
-        conn = get_db_connection()
-        account = conn.execute('SELECT * FROM accounts WHERE user_id = ?', (user_id,)).fetchone()
-
-        if account and account['balance'] >= amount:
-            conn.execute('UPDATE accounts SET balance = balance - ? WHERE user_id = ?', (amount, user_id))
-            conn.commit()
-            conn.close()
-
-            return redirect(url_for('dashboard'))
-        else:
-            return 'Insufficient balance or error'
-
-    return render_template('withdraw.html')
-
-# Transaction history route
-@app.route('/transaction_history')
-def transaction_history():
-    if 'user_id' not in session:
-        return redirect(url_for('login'))
-
-    user_id = session['user_id']
     conn = get_db_connection()
-    transactions = conn.execute('SELECT * FROM transactions WHERE account_id = (SELECT id FROM accounts WHERE user_id = ?) ORDER BY transaction_date DESC', (user_id,)).fetchall()
+    user = conn.execute('SELECT balance FROM users WHERE user_id = ?', (user_id,)).fetchone()
+
+    if not user:
+        conn.close()
+        return jsonify({"error": "User not found."}), 404
+
+    new_balance = user['balance'] + amount
+    conn.execute('UPDATE users SET balance = ? WHERE user_id = ?', (new_balance, user_id))
+    conn.execute('INSERT INTO transactions (user_id, transaction_type, amount, balance_after) VALUES (?, ?, ?, ?)',
+                 (user_id, 'Deposit', amount, new_balance))
+    conn.commit()
     conn.close()
 
-    return render_template('t.history.html', transactions=transactions)
+    return jsonify({"message": "Deposit successful.", "new_balance": new_balance}), 200
+
+# Withdrawal Endpoint
+@app.route('/withdraw', methods=['POST'])
+def withdraw():
+    data = request.json
+    user_id = data.get('user_id')
+    amount = data.get('amount')
+
+    if not user_id or not amount or amount <= 0:
+        return jsonify({"error": "Valid user ID and amount are required."}), 400
+
+    conn = get_db_connection()
+    user = conn.execute('SELECT balance FROM users WHERE user_id = ?', (user_id,)).fetchone()
+
+    if not user:
+        conn.close()
+        return jsonify({"error": "User not found."}), 404
+
+    if user['balance'] - amount < 100.0:  # Minimum balance check
+        conn.close()
+        return jsonify({"error": "Insufficient balance. Minimum balance of 100.0 required."}), 400
+
+    new_balance = user['balance'] - amount
+    conn.execute('UPDATE users SET balance = ? WHERE user_id = ?', (new_balance, user_id))
+    conn.execute('INSERT INTO transactions (user_id, transaction_type, amount, balance_after) VALUES (?, ?, ?, ?)',
+                 (user_id, 'Withdraw', amount, new_balance))
+    conn.commit()
+    conn.close()
+
+    return jsonify({"message": "Withdrawal successful.", "new_balance": new_balance}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
