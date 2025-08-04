@@ -3,33 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATM Machine - Dashboard</title>
+    <title>Virtual ATM - Dashboard</title>
     <link rel="stylesheet" href="/statics/css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Sidebar Navigation -->
     <div class="sidebar" id="sidebar">
-        <button class="close-btn" onclick="toggleMenu()">×</button>
-        <ul>
-            <!-- <li><a href="/templates/Accountinfo.html">Account Info</a></li> -->
-            <li><a href="/templates/deposit.html">Deposit</a></li>
-            <li><a href="/templates/Withdraw.html">Withdraw</a></li>
-            <li><a href="/templates/T.history.html">Transaction History</a></li>
-            <li><a href="#" onclick="logout()">Logout</a></li>
+        <div class="sidebar-header">
+            <h3>Virtual ATM</h3>
+            <button class="close-btn" onclick="toggleMenu()">×</button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/pages/deposit.html">💰 Deposit</a></li>
+            <li><a href="/pages/Withdraw.html">💸 Withdraw</a></li>
+            <li><a href="/pages/T.history.html">📊 Transaction History</a></li>
+            <li><a href="#" onclick="logout()">🚪 Logout</a></li>
         </ul>
     </div>
 
+    <!-- Main Content -->
     <div class="content">
-        <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
-        <h1>Welcome, Customer #<span id="account-number"></span></h1>
-        
-        <div class="balance-card">
-            <h2>Your Current Balance</h2>
-            <p><strong>Rs.<span id="balance">{{ user.balance }}</span></strong></p>
+        <!-- Header Section -->
+        <div class="dashboard-header">
+            <div class="header-top">
+                <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+                <div class="user-info">
+                    <span class="welcome-text">Welcome back!</span>
+                </div>
+            </div>
+            <div class="main-title">
+                <h1>Account Dashboard</h1>
+                <p class="account-info">Account #<span id="account-number">Loading...</span></p>
+            </div>
         </div>
-        
 
-        <h2>Recent Transactions</h2>
-        <ul id="transaction-history" class="transaction-list"></ul>
+        <!-- Balance and Actions Integrated Section -->
+        <div class="balance-actions-section">
+            <div class="balance-display">
+                <div class="balance-label">
+                    Current Balance
+                    <div class="status-indicator">
+                        <span class="status-dot"></span>
+                        <span>Active</span>
+                    </div>
+                </div>
+                <div class="balance-amount">
+                    <span class="currency-symbol">₹</span>
+                    <span id="balance">0.00</span>
+                </div>
+                <div class="balance-footer">
+                    <small>Last updated: <span id="last-updated">Just now</span></small>
+                </div>
+            </div>
+
+            <div class="quick-actions-grid">
+                <a href="/pages/deposit.html" class="action-item deposit-action">
+                    <div class="action-icon">+</div>
+                    <div class="action-content">
+                        <h3>Deposit</h3>
+                        <p>Add money to your account</p>
+                    </div>
+                </a>
+                <a href="/pages/Withdraw.html" class="action-item withdraw-action">
+                    <div class="action-icon">-</div>
+                    <div class="action-content">
+                        <h3>Withdraw</h3>
+                        <p>Take money from account</p>
+                    </div>
+                </a>
+                <a href="/pages/T.history.html" class="action-item history-action">
+                    <div class="action-icon">📋</div>
+                    <div class="action-content">
+                        <h3>History</h3>
+                        <p>View all transactions</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Transactions Section -->
+        <div class="transactions-section">
+            <div class="transactions-header">
+                <h2>Recent Transactions</h2>
+                <a href="/pages/T.history.html" class="view-all-btn">View All →</a>
+            </div>
+            <div class="transactions-content">
+                <div class="transactions-container">
+                    <ul id="transaction-history" class="transaction-list">
+                        <li class="no-transactions">No recent transactions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="message-container" class="message-container"></div>
     </div>
     
     <script src="/statics/js/dashboard.js"></script>

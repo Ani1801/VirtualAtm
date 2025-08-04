@@ -3,28 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Virtual ATM</title>
+    <title>Virtual ATM - Register</title>
     <link rel="stylesheet" href="/statics/css/register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="register-container">
-        <h2>Register for ATM Access</h2>
-        <form id="registerForm">
-            <label for="user_id">User ID</label>
-            <input type="text" id="user_id" name="user_id" required>
+        <div class="atm-header">
+            <div class="atm-logo">
+                <div class="logo-icon">🏧</div>
+                <h1>Virtual ATM</h1>
+            </div>
+            <div class="security-indicator">
+                <span class="security-dot"></span>
+                <span class="security-text">Secure Registration</span>
+            </div>
+        </div>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-            
-            <label for="balance">Initial Balance</label>
-            <input type="number" id="balance" name="balance" value="50000" readonly required>
-            
-            
+        <div class="register-card">
+            <div class="card-header">
+                <h2>Create New Account</h2>
+                <p>Please fill in your details to create your ATM account</p>
+            </div>
 
-            <button type="submit"><a href="/index.html"></a>Register</button>
-            <p id="message" class="message"></p>
-        </form>
+            <form id="registerForm" onsubmit="handleRegistration(event)">
+                <div class="input-group">
+                    <label for="user_id">Account Number</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="user_id" name="user_id" placeholder="Enter your desired account number" required>
+                        <span class="input-icon">👤</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Login PIN</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="password" name="password" placeholder="Create a 4-digit login PIN" maxlength="4" required>
+                        <span class="input-icon">🔒</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="transaction_pin">Transaction PIN</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="transaction_pin" name="transaction_pin" placeholder="Create a 4-digit transaction PIN" maxlength="4" required>
+                        <span class="input-icon">🔐</span>
+                    </div>
+                    <small class="input-help">This PIN will be used for deposits and withdrawals</small>
+                </div>
+
+                <div class="input-group">
+                    <label for="balance">Initial Balance</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="balance" name="balance" value="50000" readonly required>
+                        <span class="input-icon">💰</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="register-button">
+                    <span class="button-text">Create Account</span>
+                    <span class="button-arrow">→</span>
+                </button>
+
+                <div id="message" class="message"></div>
+            </form>
+
+            <div class="register-footer">
+                <div class="help-links">
+                    <a href="/index.html" class="help-link">Already have an account? Login Here</a>
+                </div>
+                
+                <div class="security-info">
+                    <p>🔐 Your account will be protected with bank-level security</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="background-elements">
+            <div class="floating-element element-1"></div>
+            <div class="floating-element element-2"></div>
+            <div class="floating-element element-3"></div>
+        </div>
     </div>
+
     <script src="/statics/js/register.js"></script>
 </body>
 </html>

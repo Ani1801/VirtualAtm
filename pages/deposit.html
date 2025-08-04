@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deposit Funds</title>
+    <title>Virtual ATM - Deposit</title>
     <link rel="stylesheet" href="/statics/css/deposit.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="deposit-container">
@@ -12,17 +13,20 @@
         
         <div class="balance-card">
             <h2>Current Balance</h2>
-            <p class="balance-display">₹<span id="current-balance"></span></p>
+            <div class="balance-display">₹<span id="current-balance">0.00</span></div>
         </div>
 
         <div class="deposit-form">
-            <input type="number" id="deposit-amount" placeholder="Enter Amount" />
-            <input type="password" id="pin-input" placeholder="Enter PIN" style="display:none;" />
-            <button id="deposit-button">Deposit Now</button>
+            <input type="number" id="deposit-amount" placeholder="Enter deposit amount" min="1" step="1" />
+            <input type="password" id="pin-input" placeholder="Enter your Transaction PIN" maxlength="4" style="display: none;" />
+            <button id="deposit-button">Proceed with Deposit</button>
         </div>
 
         <div id="message" class="feedback-message"></div>
-        <ul id="transaction-history"></ul>
+        
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="/pages/dashboard.html" style="color: #007bff; text-decoration: none; font-weight: 500;">← Back to Dashboard</a>
+        </div>
     </div>
 
     <script src="/statics/js/deposit.js"></script>

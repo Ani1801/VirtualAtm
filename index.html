@@ -3,27 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>ATM Machine - Customer Login</title>
-    <link rel="stylesheet" href="statics/css/login.css"> <!-- Direct link to CSS -->
+    <title>Virtual ATM - Login</title>
+    <link rel="stylesheet" href="statics/css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="login-container">
-        <h2>Virtual ATM Machine</h2>
-        <form id="login-form" onsubmit="handleLogin(event)">
-            <div class="input-group">
-                <label for="username">Account Number</label>
-                <input type="text" id="username" name="username" placeholder="Enter your account number" required>
+        <div class="atm-header">
+            <div class="atm-logo">
+                <div class="logo-icon">🏧</div>
+                <h1>Virtual ATM</h1>
             </div>
-            <div class="input-group">
-                <label for="pin">PIN</label>
-                <input type="password" id="pin" name="pin" placeholder="Enter your PIN" required>
+            <div class="security-indicator">
+                <span class="security-dot"></span>
+                <span class="security-text">Secure Connection</span>
             </div>
-            <button type="submit" class="login-button">Login</button>
-            <div id="message" class="message"></div>
-        </form>
+        </div>
+
+        <div class="login-card">
+            <div class="card-header">
+                <h2>Customer Login</h2>
+                <p>Please enter your credentials to access your account</p>
+            </div>
+
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label for="username">Account Number</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="username" name="username" placeholder="Enter your account number" required>
+                        <span class="input-icon">👤</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="pin">PIN</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="pin" name="pin" placeholder="Enter your 4-digit PIN" maxlength="4" required>
+                        <span class="input-icon">🔒</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="login-button">
+                    <span class="button-text">Login to Account</span>
+                    <span class="button-arrow">→</span>
+                </button>
+
+                <div id="message" class="message"></div>
+            </form>
+
+            <div class="login-footer">
+                <div class="help-links">
+                    <a href="pages/register.html" class="help-link">New User? Register Here</a>
+                    <a href="#" class="help-link">Forgot PIN?</a>
+                </div>
+                
+                <div class="security-info">
+                    <p>🔐 Your information is protected with bank-level security</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="background-elements">
+            <div class="floating-element element-1"></div>
+            <div class="floating-element element-2"></div>
+            <div class="floating-element element-3"></div>
+        </div>
     </div>
 
-    <script src="statics/js/login.js"></script> <!-- Direct link for JS -->
+    <script src="statics/js/login.js"></script>
 </body>
 </html>

@@ -1,169 +1,187 @@
 /* Base and Reset Styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #f0f4f8, #e6ecf2);
-    overflow: hidden;
-    color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8, #e6ecf2);
+  overflow: hidden;
+  color: #333;
 }
 
 /* Deposit Container */
 .deposit-container {
-    width: 90%;
-    max-width: 420px;
-    text-align: center;
-    padding: 30px 20px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 12px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.8s ease;
-    transition: transform 0.3s ease;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease;
+  transition: transform 0.3s ease;
 }
 
 .deposit-container:hover {
-    transform: scale(1.02); /* Slight zoom effect on hover */
+  transform: scale(1.02);
 }
 
 /* Deposit Title */
 .deposit-title {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 18px;
-    animation: slideIn 0.5s ease;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 18px;
+  animation: slideIn 0.5s ease;
 }
 
 /* Balance Card */
 .balance-card {
-    background: #f4f8fa;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
-    animation: slideDown 0.5s ease;
+  background: #f4f8fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.5s ease;
 }
 
 .balance-card h2 {
-    font-size: 1.1rem;
-    color: #0066cc;
-    margin-bottom: 8px;
+  font-size: 1.1rem;
+  color: #0066cc;
+  margin-bottom: 8px;
 }
 
 /* Balance Display */
 .balance-display {
-    font-size: 2rem;
-    color: #00cc66;
-    font-weight: bold;
+  font-size: 2rem;
+  color: #00cc66;
+  font-weight: bold;
 }
 
 /* Deposit Form */
 .deposit-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 /* Input and Button Styles */
 .deposit-form input,
 .deposit-form button {
-    width: 100%;
-    max-width: 380px;
-    padding: 12px 16px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+  width: 100%;
+  max-width: 380px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
 /* Input Styles */
 .deposit-form input {
-    background: #ffffff;
-    color: #333;
-    text-align: center;
-    outline: none;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  color: #333;
+  text-align: center;
+  outline: none;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);
 }
 
 .deposit-form input:focus {
-    border: 2px solid #00cc66;
-    box-shadow: 0px 0px 12px rgba(0, 204, 102, 0.3);
+  border: 2px solid #00cc66;
+  box-shadow: 0px 0px 12px rgba(0, 204, 102, 0.3);
 }
 
 /* Button Styles */
 .deposit-form button {
-    background: #00cc66;
-    color: #ffffff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s ease;
+  background: #00cc66;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s, box-shadow 0.2s ease;
 }
 
 .deposit-form button:hover {
-    background: #00994d;
-    transform: translateY(-2px);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); /* Add shadow on hover */
+  background: #00994d;
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 /* Feedback Message Styles */
 .feedback-message {
-    font-size: 1rem;
-    margin-top: 15px;
-    color: #333;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+  font-size: 1rem;
+  margin-top: 15px;
+  color: #333;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 .feedback-message.show {
-    opacity: 1; /* Fade in feedback message */
+  opacity: 1;
 }
 
 /* Keyframe Animations */
 @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes slideIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Media Query for Mobile Responsiveness */
 @media (max-width: 480px) {
-    .deposit-container {
-        padding: 20px 15px;
-    }
+  .deposit-container {
+    padding: 20px 15px;
+  }
 
-    .deposit-title {
-        font-size: 1.8rem;
-    }
+  .deposit-title {
+    font-size: 1.8rem;
+  }
 
-    .balance-card h2 {
-        font-size: 1rem;
-    }
+  .balance-card h2 {
+    font-size: 1rem;
+  }
 
-    .balance-display {
-        font-size: 1.6rem;
-    }
+  .balance-display {
+    font-size: 1.6rem;
+  }
 
-    .deposit-form input,
-    .deposit-form button {
-        padding: 10px;
-        font-size: 0.9rem;
-    }
+  .deposit-form input,
+  .deposit-form button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
 }

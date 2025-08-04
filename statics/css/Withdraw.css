@@ -1,120 +1,123 @@
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #e6e9f0, #eef1f5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #e6e9f0, #eef1f5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
 }
 
 .atm-container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-    width: 350px;
-    text-align: center;
-    border: 2px solid #f1f1f1;
-    transition: transform 0.3s, box-shadow 0.3s; /* Animation effect on hover */
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  text-align: center;
+  border: 2px solid #f1f1f1;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .atm-container:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .heading {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 20px;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .screen {
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 8px;
-    border: 2px solid #ddd;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    transition: background-color 0.3s; /* Smooth transition for background color */
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
 .screen:hover {
-    background-color: #e0e0e0; /* Darker on hover */
+  background-color: #e0e0e0;
 }
 
 .amount-button {
-    margin: 5px;
-    padding: 12px 25px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
-    transition: background-color 0.3s, transform 0.2s; /* Animation effects */
+  margin: 5px;
+  padding: 12px 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .amount-button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px); /* Lift effect on hover */
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
 .custom-amount {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
-#custom-amount-input, #pin-input {
-    width: calc(100% - 30px);
-    padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    margin-top: 10px;
-    transition: border-color 0.3s; /* Smooth transition for border color */
+#custom-amount-input,
+#pin-input {
+  width: calc(100% - 30px);
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  margin-top: 10px;
+  transition: border-color 0.3s;
 }
 
-#custom-amount-input:focus, #pin-input:focus {
-    border-color: #007bff;
+#custom-amount-input:focus,
+#pin-input:focus {
+  border-color: #007bff;
 }
 
 .confirm-button {
-    background-color: #28a745;
-    padding: 10px 25px;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s, transform 0.2s; /* Animation effects */
+  background-color: #28a745;
+  padding: 10px 25px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .confirm-button:hover {
-    background-color: #218838;
-    transform: translateY(-2px); /* Lift effect on hover */
+  background-color: #218838;
+  transform: translateY(-2px);
 }
 
 .key-button {
-    padding: 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s; /* Animation effect */
+  padding: 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.key-button:hover, .confirm-button:hover {
-    background-color: #0056b3;
+.key-button:hover,
+.confirm-button:hover {
+  background-color: #0056b3;
 }
 
 #message {
-    margin-top: 10px;
-    font-weight: bold;
-    color: #28a745; /* Set message color to green for consistency */
+  margin-top: 10px;
+  font-weight: bold;
+  color: #28a745;
 }
